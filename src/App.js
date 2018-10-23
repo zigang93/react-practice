@@ -16,7 +16,7 @@ class App extends Component {
   addNinja = (ninja) => {
     // temp id
     ninja.id = Math.random();
-    
+
     // check value
     console.log(ninja);
 
@@ -39,6 +39,15 @@ class App extends Component {
       ninjas: ninjas
     })
 
+  }
+
+  componentDidMount() {
+    console.log('Component Mounted')
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componnet updated');
+    console.log(prevProps, prevState);
   }
 
   render() {
