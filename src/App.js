@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Ninjas from './Components/Ninjas.js';
+import Ninjas from './Components/Ninjas';
+import AddNinja from './Components/AddNinja';
 
 class App extends Component {
 
@@ -12,12 +13,41 @@ class App extends Component {
     ]
   }
 
+  addNinja = (ninja) => {
+    // temp id
+    ninja.id = Math.random();
+    
+    // check value
+    console.log(ninja);
+
+    // clone the array of state coz we dont want change the state
+    let ninjas = [...this.state.ninjas, ninja]
+
+    this.setState({
+      ninjas: ninjas
+    })
+
+  }
+
+  deleteNinja = (id) => {
+    // filter wuth id
+    let ninjas = this.state.ninjas.filter(ninja => {
+      return ninja.id !== id;
+    });
+
+    this.setState({
+      ninjas: ninjas
+    })
+
+  }
+
   render() {
     return (
       <div className="App">
         <h1>My first React App</h1>
         <p>Welcome</p>
-        <Ninjas ninjas={this.state.ninjas}/>
+        <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
+        <AddNinja addNinja={this.addNinja} />
       </div>
     );
   }

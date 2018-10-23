@@ -2,7 +2,7 @@ import React from 'react';
 import './Ninjas.css';
 
 // UI component, no need Class
-const Ninjas = ({ninjas}) => {
+const Ninjas = ({ninjas, deleteNinja}) => {
 
   // show all props on this components
   // console.log(this.props)
@@ -16,6 +16,7 @@ const Ninjas = ({ninjas}) => {
         <div>Name:{ninja.name}</div>
         <div>Age: {ninja.age}</div>
         <div>Belt: {ninja.belt}</div>
+        <button onClick={() => {deleteNinja(ninja.id)}}>Delete</button>
       </div>
       : null; 
   });
